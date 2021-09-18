@@ -1,0 +1,7 @@
+main: com.gmail.calorious.JavaAPI_Base
+name: JavaAPI
+version: 2.6
+commands:
+     javaapi:
+         description: lol
+         usage: /<command>
