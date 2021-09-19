@@ -1,4 +1,4 @@
-package com.gmail.calorious.api.objects;
+package com.gmail.calorious.api.spigot.objects;
 
 import java.text.DecimalFormat;
 import java.util.concurrent.TimeUnit;

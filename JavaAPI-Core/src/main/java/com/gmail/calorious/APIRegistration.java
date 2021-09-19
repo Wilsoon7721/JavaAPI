@@ -4,10 +4,10 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.gmail.calorious.api.spigot.util.APIClassWrapper;
+
 import java.util.Map;
 import java.util.TreeMap;
-
-import com.gmail.calorious.api.util.APIClassWrapper;
 
 public class APIRegistration {
     private static TreeMap<String, APIClassWrapper> classes = new TreeMap<>();

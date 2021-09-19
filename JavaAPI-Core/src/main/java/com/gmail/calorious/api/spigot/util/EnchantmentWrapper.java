@@ -1,4 +1,4 @@
-package com.gmail.calorious.api.util;
+package com.gmail.calorious.api.spigot.util;
 
 import org.bukkit.enchantments.Enchantment;
 

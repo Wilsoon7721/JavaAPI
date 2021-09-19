@@ -1,13 +1,13 @@
-package com.gmail.calorious.api.builder;
+package com.gmail.calorious.api.spigot.builder;
 
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.List;
+import com.gmail.calorious.api.spigot.util.EnchantmentWrapper;
+import com.gmail.calorious.api.spigot.util.MsgUtils;
 
-import com.gmail.calorious.api.util.EnchantmentWrapper;
-import com.gmail.calorious.api.util.MsgUtils;
+import java.util.List;
 
 public class MetaBuilder {
     private ItemMeta meta;

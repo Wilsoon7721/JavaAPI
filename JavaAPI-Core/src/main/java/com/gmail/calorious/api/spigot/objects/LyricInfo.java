@@ -1,4 +1,4 @@
-package com.gmail.calorious.api.objects;
+package com.gmail.calorious.api.spigot.objects;
 
 public class LyricInfo {
 	// Contains song information from TimedLyrics

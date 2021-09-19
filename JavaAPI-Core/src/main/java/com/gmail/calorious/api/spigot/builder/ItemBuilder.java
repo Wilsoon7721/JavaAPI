@@ -1,4 +1,4 @@
-package com.gmail.calorious.api.builder;
+package com.gmail.calorious.api.spigot.builder;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;

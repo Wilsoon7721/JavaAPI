@@ -1,10 +1,10 @@
-package com.gmail.calorious.api.builder;
+package com.gmail.calorious.api.spigot.builder;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 
-import com.gmail.calorious.api.util.EnchantmentWrapper;
+import com.gmail.calorious.api.spigot.util.EnchantmentWrapper;
 
 public class EnchantmentBookBuilder extends MetaBuilder {
     private ItemStack item;

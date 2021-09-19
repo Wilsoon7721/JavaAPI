@@ -4,7 +4,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import com.gmail.calorious.api.util.MsgUtils;
+import com.gmail.calorious.api.spigot.util.MsgUtils;
 
 public class JavaAPICommand implements CommandExecutor {
     private JavaAPI_Base instance;
