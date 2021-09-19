@@ -1,20 +1,22 @@
 package com.gmail.calorious;
 
+import java.util.Map;
+import java.util.TreeMap;
+
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.gmail.calorious.api.spigot.util.APIClassWrapper;
 
-import java.util.Map;
-import java.util.TreeMap;
-
 public class APIRegistration {
     private static TreeMap<String, APIClassWrapper> classes = new TreeMap<>();
     public static final double VERSION = Double.parseDouble(JavaAPI_Base.getInstance().getDescription().getVersion());
 
-    public static void registerNewPluginDependency(String pluginFriendlyName, Class<? extends JavaPlugin> mainclass,
-	    double apiVersion) {
+    public static void registerNewPluginDependency(String pluginFriendlyName, Class<? extends JavaPlugin> mainclass, boolean customVersion, double apiVersion) {
+    	if(!customVersion) {
+    		apiVersion = VERSION;
+    	}
 	if(mainclass.getCanonicalName().equalsIgnoreCase("com.gmail.calorious.JavaAPI_Base")) {
 	    Bukkit.getLogger().warning(pluginFriendlyName + " tried to register a class name similar to JavaAPI.");
 	    return;

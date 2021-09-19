@@ -8,12 +8,12 @@ import com.google.cloud.translate.TranslateOptions;
 import com.google.cloud.translate.Translation;
 
 public class MsgUtils {
+	public static void sendConsoleMessage(String message) {
+		Bukkit.getConsoleSender().sendMessage(MsgUtils.color(message));
+	}
+	
     public static String color(String message) {
 	return ChatColor.translateAlternateColorCodes('&', message);
-    }
-    
-    public static void sendConsoleMessage(String message) {
-    	Bukkit.getConsoleSender().sendMessage(MsgUtils.color(message));
     }
 
     public static String translateLanguage(String message, String two_letter_language_identifier) {

@@ -35,5 +35,8 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/wilso/Desktop/1.8.8 Spigot Binary.jar"/>
+	<classpathentry kind="lib" path="C:/Users/wilso/Desktop/1.8.8 Multiverse Core Binary.jar"/>
+	<classpathentry kind="lib" path="C:/Users/wilso/Desktop/DiscordSRV-Build-1.22.0.jar"/>
+	<classpathentry kind="lib" path="F:/Users/Wilson Oon/Desktop/1.8.8 Spigot Server/plugins/CoreProtect_2.12.0.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
