@@ -31,6 +31,7 @@ public class InternalPluginManager {
 		RegisteredServiceProvider<LuckPerms> provider = Bukkit.getServicesManager().getRegistration(LuckPerms.class);
 		if(provider != null) {
 			LPIntegration.initialize();
+			activatedDependencies++;
 		}
 		// MVCore
 		if(Bukkit.getPluginManager().getPlugin("MultiverseCore") != null) {
