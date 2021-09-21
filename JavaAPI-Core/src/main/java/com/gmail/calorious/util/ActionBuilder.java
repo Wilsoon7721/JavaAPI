@@ -1,5 +1,6 @@
 package com.gmail.calorious.util;
 
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
 public class ActionBuilder<T> {
@@ -7,6 +8,12 @@ public class ActionBuilder<T> {
 	private Consumer<? super T> action = null;
 	protected ActionBuilder(CompletionBuilder<T> completer) {
 		this.completer = completer;
+	}
+	
+	// Updates action builder and immediately executes Future according to parameters provided.
+	public CompletableFuture<Void> execute(boolean async) {
+		completer.setActionBuilder(this);
+		return completer.execute(async);
 	}
 	
 	public CompletionBuilder<T> build() {

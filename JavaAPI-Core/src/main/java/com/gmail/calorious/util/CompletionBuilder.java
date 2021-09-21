@@ -1,25 +1,34 @@
 package com.gmail.calorious.util;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
 
 public class CompletionBuilder<T> {
-	public CompletableFuture<T> future = null;
-	public ActionBuilder<T> actionBuilder = null;
+	private CompletableFuture<T> future = null;
+	private ActionBuilder<T> actionBuilder = null;
 	protected CompletionBuilder(CompletableFuture<T> future) {
 		this.future = future;
 	}
 	
-	public CompletableFuture<T> getFuture() {
-		return future;
+	public void setFallback(Function<Throwable, ? extends T> fallBack) {
+		future.exceptionally(fallBack);
+		return;
 	}
 	
-	public void performAction(boolean async) {
+	// Returns code from execution
+	public CompletableFuture<Void> execute(boolean async) {
 		if(!(async)) { 
-			future.thenAccept(actionBuilder.getAction());
-			return;
+			CompletableFuture<Void> completed = future.thenAccept(actionBuilder.getAction());
+			if(completed.isCompletedExceptionally() || completed.isCancelled()) return null;; 
+			return completed;
 		}
-		future.thenAcceptAsync(actionBuilder.getAction());
-		return;
+		CompletableFuture<Void> completed = future.thenAcceptAsync(actionBuilder.getAction());
+		if(completed.isCompletedExceptionally() || completed.isCancelled()) return null;
+		return completed;
+	}
+	
+	public CompletableFuture<T> getFuture() {
+		return future;
 	}
 	
 	public ActionBuilder<T> getActionBuilder() {
@@ -27,8 +36,8 @@ public class CompletionBuilder<T> {
 		return actionBuilder;
 	}
 	
-	public CompletionBuilder<T> setActionBuilder(ActionBuilder<T> actions) {
-		this.actionBuilder = actions;
+	public CompletionBuilder<T> setActionBuilder(ActionBuilder<T> builder) {
+		this.actionBuilder = builder;
 		return this;
 	}
 }
