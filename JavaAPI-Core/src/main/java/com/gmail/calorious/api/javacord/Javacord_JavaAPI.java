@@ -30,7 +30,7 @@ public class Javacord_JavaAPI {
 		return api;
 	}
 	
-	public void setApi(DiscordApi api) {
+	protected void setApi(DiscordApi api) {
 		this.api = api;
 	}
 	
