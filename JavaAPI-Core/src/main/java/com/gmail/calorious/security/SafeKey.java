@@ -20,7 +20,7 @@ public class SafeKey {
 	private String input = "";
 	protected SafeKey(String input) {
 		try {
-			secretKey = SafeHouse.generateKey(128);
+			secretKey = SafeHouse.generateKey();
 		} catch (NoSuchAlgorithmException e) {
 			throw new IllegalStateException("Generating SecretKey failed with NoSuchAlgorithmException.");
 		}

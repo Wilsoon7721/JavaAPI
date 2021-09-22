@@ -9,9 +9,16 @@ import javax.crypto.spec.IvParameterSpec;
 
 public class SafeHouse {
 	// Encrypt and decrypt
-	protected static SecretKey generateKey(int n) throws NoSuchAlgorithmException {
+	protected static SecretKey generateKey() throws NoSuchAlgorithmException {
 	    KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
-	    keyGenerator.init(n);
+	    keyGenerator.init(128);
+	    SecretKey key = keyGenerator.generateKey();
+	    return key;
+	}
+	
+	protected static SecretKey generateKey(int keysize) throws NoSuchAlgorithmException {
+	    KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
+	    keyGenerator.init(keysize);
 	    SecretKey key = keyGenerator.generateKey();
 	    return key;
 	}

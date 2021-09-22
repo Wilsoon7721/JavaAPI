@@ -22,19 +22,20 @@ public class VersionVerifier {
 	public static boolean isServerAboveVersion(String version) {
 		version = versionConverter(version);
 		String serverVersion = versionConverter(getServerVersion());
-		Version eServerVersion = null;
-		Version eInputtedVersion = null;
+		Version eServerVersion = null, eInputtedVersion = null;
 		try {
 			eServerVersion = Version.valueOf(serverVersion);
 		} catch(IllegalArgumentException ex) {
 			MsgUtils.sendConsoleMessage("&cError: Could not check if server is above version - Server Version could not be found in Version enum.");
 			MsgUtils.sendConsoleMessage("&c - Attempted to look for: &c" + serverVersion);
+			return false;
 		}
 		try {
 			eInputtedVersion = Version.valueOf(version);
 		} catch(IllegalArgumentException ex) {
 			MsgUtils.sendConsoleMessage("&cError: Could not check if server is above version - Inputted version could not be found in Version enum.");
 			MsgUtils.sendConsoleMessage("&c - Attempted to look for: &c" + version);
+			return false;
 		}
 		return eInputtedVersion.getWeightage() > eServerVersion.getWeightage();
 	}

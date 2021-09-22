@@ -13,6 +13,7 @@ import javax.crypto.NoSuchPaddingException;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
 import org.javacord.api.entity.intent.Intent;
+import org.javacord.api.entity.user.User;
 
 import com.gmail.calorious.security.SafeKey;
 
@@ -38,7 +39,17 @@ public class Javacord_JavaAPI {
 		this.tokenKey = tokenKey;
 	}
 	
-	public void startBot() {
+	public synchronized User getBotUser() {
+		while(api == null) {
+			try {
+				this.wait();
+			} catch(InterruptedException e) {}
+		}
+		return api.getYourself();
+	}
+	
+	public synchronized void startBot() {
+		Thread currentThread = Thread.currentThread();
 		thread = new Thread() {
 			@Override
 			public void run() {
@@ -65,8 +76,10 @@ public class Javacord_JavaAPI {
 				DiscordApi api = builder.login().join();
 				System.out.println("Successfully logged in as " + api.getYourself().getDiscriminatedName() + ".");
 				System.out.println("JavaAPI is performing API functions on behalf of application: " + JavacordRegistration.getApplicationNameFromKey(tokenKey));
+				System.out.println(" -- Ready to accept methods passed by API -- ");
 				setApi(api);
 				running = true;
+				currentThread.notifyAll();
 			}
 		};
 		thread.start();
