@@ -2,6 +2,7 @@ package com.gmail.calorious.api.javacord;
 
 import java.util.HashMap;
 
+import org.javacord.api.entity.Icon;
 import org.javacord.api.entity.user.User;
 
 import com.gmail.calorious.api.Factory;
@@ -28,8 +29,16 @@ public class API_User {
 		return;
 	}
 	
+	public Icon getAvatar() {
+		return user.getAvatar();
+	}
+	
+	public long getUserID() {
+		return user.getId();
+	}
+	
 	public String getCombinedUsername() {
-		return username;
+		return combinedUser;
 	}
 	
 	public String getDiscriminator() {
