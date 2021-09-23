@@ -6,6 +6,8 @@ import java.util.function.Consumer;
 
 public class FutureCompleter {
 	
+	private FutureCompleter() {}
+	
 	public static <T> CompletableFuture<Void> completeFuture(CompletableFuture<T> future, Consumer<? super T> action) {
 		CompletionBuilder<T> builder = new CompletionBuilder<T>(future);
 		return builder.getActionBuilder().setAction(action).execute(false);

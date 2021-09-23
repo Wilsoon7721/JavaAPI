@@ -1,8 +1,10 @@
 package com.gmail.calorious.api.javacord;
 
 import java.util.HashMap;
+import java.util.Set;
 
 import org.javacord.api.entity.Icon;
+import org.javacord.api.entity.activity.Activity;
 import org.javacord.api.entity.user.User;
 
 import com.gmail.calorious.api.Factory;
@@ -20,13 +22,17 @@ public class API_User {
 		this.user = user;
 	}
 	
-	public void update() {
+	public void updateDetails() {
 		HashMap<String, String> map = Factory.Javacord.updateUser(user);
 		this.discriminator = map.get("discriminator");
 		this.username = map.get("username");
 		this.combinedUser = map.get("combined");
 		// Complete
 		return;
+	}
+	
+	public Set<Activity> getCurrentActivities() {
+		return user.getActivities();
 	}
 	
 	public Icon getAvatar() {

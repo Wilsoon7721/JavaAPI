@@ -10,12 +10,14 @@ import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
+import org.javacord.api.AccountType;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
 import org.javacord.api.entity.intent.Intent;
 import org.javacord.api.entity.user.User;
 
 import com.gmail.calorious.security.SafeKey;
+import com.gmail.calorious.util.Printer;
 
 public class Javacord_JavaAPI {	
 	private SafeKey tokenKey = null;
@@ -74,9 +76,14 @@ public class Javacord_JavaAPI {
 					builder.setAllIntentsExcept(list.toArray(new Intent[list.size()]));
 				}
 				DiscordApi api = builder.login().join();
-				System.out.println("Successfully logged in as " + api.getYourself().getDiscriminatedName() + ".");
-				System.out.println("JavaAPI is performing API functions on behalf of application: " + JavacordRegistration.getApplicationNameFromKey(tokenKey));
-				System.out.println(" -- Ready to accept methods passed by API -- ");
+				Printer.print("Successfully logged in as " + api.getYourself().getDiscriminatedName() + ".");
+				Printer.print("JavaAPI is performing API functions on behalf of application: " + JavacordRegistration.getApplicationNameFromKey(tokenKey));
+				if(api.getAccountType() == AccountType.CLIENT) {
+					Printer.separator();
+					Printer.print("WARNING: Client bots are not supported by Discord and may lead to an account ban. Please use at your own risk.");
+					Printer.separator();
+				}
+				Printer.print(" -- Ready to accept methods passed by API -- ");
 				setApi(api);
 				running = true;
 				currentThread.notifyAll();
@@ -88,7 +95,12 @@ public class Javacord_JavaAPI {
 	public void stopBot() {
 		if(thread.isInterrupted()) throw new IllegalStateException("Thread already interrupted!");
 		thread.interrupt();
-		System.out.println("Bot's main thread was interrupted.");
+		Printer.print("Bot's main thread was interrupted.");
+		return;
+	}
+	
+	public void setAccountType(AccountType type) {
+		builder.setAccountType(type);
 		return;
 	}
 	
