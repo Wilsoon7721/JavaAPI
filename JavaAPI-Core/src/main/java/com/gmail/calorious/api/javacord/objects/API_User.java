@@ -1,4 +1,4 @@
-package com.gmail.calorious.api.javacord;
+package com.gmail.calorious.api.javacord.objects;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -36,7 +36,7 @@ public class API_User {
 	private Icon avatar = null;
 	private long id = -1L;
 	private Set<Activity> activities = null;
-	protected API_User(User user) {
+	public API_User(User user) {
 		if(user == null) return;
 		this.user = user;
 		updateAllDetails();

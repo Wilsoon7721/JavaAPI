@@ -1,4 +1,4 @@
-package com.gmail.calorious.api.javacord;
+package com.gmail.calorious.api.javacord.objects;
 
 import java.time.format.DateTimeFormatter;
 import java.util.Collection;
@@ -223,7 +223,15 @@ public class API_Server {
 		return FutureCompleter.handle(server.getWebhooks());
 	}
 	
-	public ServerUpdater callUpdater() {
-		return new ServerUpdater(server);
+	public API_ServerUpdater createUpdater() {
+		return API_ServerUpdater.with(server);
+	}
+	
+	public API_ServerUpdater callUpdater() {
+		return API_ServerUpdater.with(server);
+	}
+	
+	public API_ServerUpdater updater() {
+		return API_ServerUpdater.with(server);
 	}
 }

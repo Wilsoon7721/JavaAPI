@@ -16,6 +16,7 @@ import org.javacord.api.DiscordApiBuilder;
 import org.javacord.api.entity.intent.Intent;
 import org.javacord.api.entity.user.User;
 
+import com.gmail.calorious.api.javacord.objects.API_User;
 import com.gmail.calorious.security.SafeKey;
 import com.gmail.calorious.util.Defaults;
 import com.gmail.calorious.util.ExceptionLogger;
