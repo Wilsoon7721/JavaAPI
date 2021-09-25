@@ -10,7 +10,7 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import com.gmail.calorious.JavaAPI_Base;
+import com.gmail.calorious.api.spigot.JavaAPI_Base;
 import com.gmail.calorious.api.spigot.util.MsgUtils;
 
 import net.coreprotect.CoreProtect;

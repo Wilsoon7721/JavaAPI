@@ -23,7 +23,7 @@ import org.javacord.api.entity.user.User;
 import org.javacord.api.entity.user.UserFlag;
 import org.javacord.api.entity.user.UserStatus;
 
-import com.gmail.calorious.api.Factory;
+import com.gmail.calorious.api.InternalFactory;
 import com.gmail.calorious.api.javacord.util.UserDetail;
 import com.gmail.calorious.util.ExceptionLogger;
 import com.gmail.calorious.util.Formatter;
@@ -165,7 +165,7 @@ public class API_User {
 	}
 	
 	public void updateDetails() {
-		HashMap<UserDetail, String> map = Factory.Javacord.updateUser(user);
+		HashMap<UserDetail, String> map = InternalFactory.Javacord.updateUser(user);
 		this.discriminator = map.get(UserDetail.DISCRIMINATOR);
 		this.username = map.get(UserDetail.USERNAME);
 		this.combinedUser = map.get(UserDetail.COMBINED_NAME);
@@ -174,7 +174,7 @@ public class API_User {
 	}
 	
 	public void updateAllDetails() {		
-		HashMap<UserDetail, String> map = Factory.Javacord.updateUser(user);
+		HashMap<UserDetail, String> map = InternalFactory.Javacord.updateUser(user);
 		this.discriminator = map.get(UserDetail.DISCRIMINATOR);
 		this.username = map.get(UserDetail.USERNAME);
 		this.combinedUser = map.get(UserDetail.COMBINED_NAME);

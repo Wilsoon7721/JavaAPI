@@ -1,4 +1,4 @@
-package com.gmail.calorious;
+package com.gmail.calorious.api.spigot;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
