@@ -17,6 +17,8 @@ import org.javacord.api.entity.intent.Intent;
 import org.javacord.api.entity.user.User;
 
 import com.gmail.calorious.security.SafeKey;
+import com.gmail.calorious.util.Defaults;
+import com.gmail.calorious.util.ExceptionLogger;
 import com.gmail.calorious.util.Printer;
 
 public class Javacord_JavaAPI {	
@@ -84,18 +86,30 @@ public class Javacord_JavaAPI {
 					Printer.separator();
 				}
 				Printer.print(" -- Ready to accept methods passed by API -- ");
+				Printer.separator();
 				setApi(api);
 				running = true;
+				Defaults.registerDefaultListeners(api);
 				currentThread.notifyAll();
 			}
 		};
 		thread.start();
 	}
 	
+	public API_User getUserById(long id) {
+		User user = api.getUserById(id).exceptionally(new ExceptionLogger<User>()).join();
+		return new API_User(user);
+	}
+	
+	public API_User getUserById(String id) {
+		User user = api.getUserById(id).exceptionally(new ExceptionLogger<User>()).join();
+		return new API_User(user);
+	}
+	
 	public void stopBot() {
 		if(thread.isInterrupted()) throw new IllegalStateException("Thread already interrupted!");
 		thread.interrupt();
-		Printer.print("Bot's main thread was interrupted.");
+		Printer.print("Successfully stopped the bot.");
 		return;
 	}
 	
