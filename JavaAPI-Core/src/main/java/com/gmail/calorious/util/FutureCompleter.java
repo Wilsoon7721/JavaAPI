@@ -18,6 +18,10 @@ public class FutureCompleter {
 		return builder.getActionBuilder().setAction(action).execute(async);
 	}
 	
+	public static <T> T handle(CompletableFuture<T> future) {
+		return future.join();
+	}
+	
 	public static <T> T getResult(CompletableFuture<T> future) {
 		T obj = null;
 		try {
