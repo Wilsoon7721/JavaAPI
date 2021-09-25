@@ -3,8 +3,10 @@ package com.gmail.calorious.api.javacord;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Collection;
 import java.util.EnumSet;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ExecutionException;
@@ -14,6 +16,7 @@ import org.javacord.api.entity.DiscordClient;
 import org.javacord.api.entity.Icon;
 import org.javacord.api.entity.activity.Activity;
 import org.javacord.api.entity.channel.PrivateChannel;
+import org.javacord.api.entity.channel.ServerVoiceChannel;
 import org.javacord.api.entity.permission.Role;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
@@ -39,8 +42,20 @@ public class API_User {
 		updateAllDetails();
 	}
 	
+	public static API_User from(User user) {
+		return new API_User(user);
+	}
+	
 	public static API_User newInstance(User user) {
 		return new API_User(user);
+	}
+	
+	public User parent() {
+		return user;
+	}
+	
+	public User getUser() {
+		return user;
 	}
 	
 	public List<Role> getServerRole(Server server) {
@@ -63,6 +78,32 @@ public class API_User {
 	
 	public String getMentionTag() {
 		return user.getMentionTag();
+	}
+	
+	public API_User updateInstance() {
+		this.user = user.getLatestInstance().join();
+		API_User newUser = new API_User(user);
+		newUser.updateAllDetails();
+		return newUser;
+	}
+	
+	public ServerVoiceChannel getConnectedVoiceChannel(Server server) {
+		if(!user.getConnectedVoiceChannel(server).isPresent()) return null;
+		return user.getConnectedVoiceChannel(server).get();
+	}
+	
+	public Collection<API_Server> getMutualServers() {
+		return user.getMutualServers().stream().map(server -> API_Server.from(server)).collect(Collectors.toCollection(LinkedHashSet::new));
+	}
+	
+	public void resetNickname(Server server, String reason) {
+		user.resetNickname(server, reason).exceptionally(new ExceptionLogger<Void>());
+		return;
+	}
+	
+	public void resetNickname(Server server) {
+		user.resetNickname(server).exceptionally(new ExceptionLogger<Void>());
+		return;
 	}
 	
 	public PrivateChannel openDirectMessage() {
