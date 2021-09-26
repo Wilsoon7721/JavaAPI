@@ -1,4 +1,4 @@
-package com.gmail.calorious.api.spigot;
+package com.gmail.calorious;
 
 import java.util.Map;
 import java.util.TreeMap;

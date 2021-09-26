@@ -6,8 +6,8 @@ import org.javacord.api.entity.user.User;
 
 import com.gmail.calorious.api.javacord.util.UserDetail;
 
-public class InternalFactory {
-	private InternalFactory() {}
+public class Factory {
+	private Factory() {}
 	public static class Javacord {
 		// Returns a HashMap with name, discriminator and discriminated name.
 		public static HashMap<UserDetail, String> updateUser(User user) {

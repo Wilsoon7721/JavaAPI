@@ -1,4 +1,4 @@
-package com.gmail.calorious.api.javacord.objects;
+package com.gmail.calorious.api.javacord;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -23,7 +23,7 @@ import org.javacord.api.entity.user.User;
 import org.javacord.api.entity.user.UserFlag;
 import org.javacord.api.entity.user.UserStatus;
 
-import com.gmail.calorious.api.InternalFactory;
+import com.gmail.calorious.api.Factory;
 import com.gmail.calorious.api.javacord.util.UserDetail;
 import com.gmail.calorious.util.ExceptionLogger;
 import com.gmail.calorious.util.Formatter;
@@ -36,7 +36,7 @@ public class API_User {
 	private Icon avatar = null;
 	private long id = -1L;
 	private Set<Activity> activities = null;
-	public API_User(User user) {
+	protected API_User(User user) {
 		if(user == null) return;
 		this.user = user;
 		updateAllDetails();
@@ -165,7 +165,7 @@ public class API_User {
 	}
 	
 	public void updateDetails() {
-		HashMap<UserDetail, String> map = InternalFactory.Javacord.updateUser(user);
+		HashMap<UserDetail, String> map = Factory.Javacord.updateUser(user);
 		this.discriminator = map.get(UserDetail.DISCRIMINATOR);
 		this.username = map.get(UserDetail.USERNAME);
 		this.combinedUser = map.get(UserDetail.COMBINED_NAME);
@@ -174,7 +174,7 @@ public class API_User {
 	}
 	
 	public void updateAllDetails() {		
-		HashMap<UserDetail, String> map = InternalFactory.Javacord.updateUser(user);
+		HashMap<UserDetail, String> map = Factory.Javacord.updateUser(user);
 		this.discriminator = map.get(UserDetail.DISCRIMINATOR);
 		this.username = map.get(UserDetail.USERNAME);
 		this.combinedUser = map.get(UserDetail.COMBINED_NAME);

@@ -1,4 +1,4 @@
-package com.gmail.calorious.api.spigot;
+package com.gmail.calorious;
 
 public enum Version {
 	MC1_4_7(1),

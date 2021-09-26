@@ -8,11 +8,6 @@ public class OptionalHandler {
 	
 	private OptionalHandler() {}
 	
-	public static <T> T handle(Optional<T> optional) {
-		if(optional.isPresent()) return optional.get();
-		return null;
-	}
-	
 	public static <T> T getResult(Optional<T> optional) {
 		return optional.get();
 	}
