@@ -31,4 +31,8 @@ public class FutureCompleter {
 		if(obj == null) throw new RuntimeException("Could not get object. CompletableFuture<T> - Object is null.");
 		return obj;
 	}
+	
+	public static <T> T handle(CompletableFuture<T> future) {
+		return future.join();
+	}
 }

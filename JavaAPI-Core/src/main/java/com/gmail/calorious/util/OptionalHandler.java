@@ -32,4 +32,9 @@ public class OptionalHandler {
 	public static <T, U> Optional<U> flatMap(Optional<T> optional, Function<? super T, Optional<U>> function) {
 		return optional.flatMap(function);
 	}
+	
+	public static <T> T handle(Optional<T> optional) {
+		if(optional.isPresent()) return optional.get();
+		return null;
+	}
 }

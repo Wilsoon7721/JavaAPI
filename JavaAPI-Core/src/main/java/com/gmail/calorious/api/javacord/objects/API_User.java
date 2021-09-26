@@ -1,4 +1,4 @@
-package com.gmail.calorious.api.javacord;
+package com.gmail.calorious.api.javacord.objects;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -6,7 +6,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.EnumSet;
 import java.util.HashMap;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ExecutionException;
@@ -28,7 +27,7 @@ import com.gmail.calorious.api.javacord.util.UserDetail;
 import com.gmail.calorious.util.ExceptionLogger;
 import com.gmail.calorious.util.Formatter;
 
-public class API_User {
+public class API_User implements API_DiscordEntity {
 	private String discriminator = "";
 	private String username = "";
 	private String combinedUser = "";
@@ -36,7 +35,7 @@ public class API_User {
 	private Icon avatar = null;
 	private long id = -1L;
 	private Set<Activity> activities = null;
-	protected API_User(User user) {
+	public API_User(User user) {
 		if(user == null) return;
 		this.user = user;
 		updateAllDetails();
@@ -92,8 +91,8 @@ public class API_User {
 		return user.getConnectedVoiceChannel(server).get();
 	}
 	
-	public Collection<API_Server> getMutualServers() {
-		return user.getMutualServers().stream().map(server -> API_Server.from(server)).collect(Collectors.toCollection(LinkedHashSet::new));
+	public Collection<Server> getMutualServers() {
+		return user.getMutualServers();
 	}
 	
 	public void resetNickname(Server server, String reason) {
@@ -193,11 +192,6 @@ public class API_User {
 		return avatar;
 	}
 	
-	public long getUserID() {
-		if(id == -1L) return user.getId();
-		return id;
-	}
-	
 	public String getCombinedUsername() {
 		return combinedUser;
 	}
@@ -207,6 +201,21 @@ public class API_User {
 	}
 	
 	public String getUsername() {
+		return username;
+	}
+	
+	@Override
+	public long getId() {
+		return id;
+	}
+
+	@Override
+	public String getIdAsString() {
+		return String.valueOf(id);
+	}
+
+	@Override
+	public String getName() {
 		return username;
 	}
 }
