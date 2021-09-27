@@ -19,6 +19,7 @@ import org.javacord.api.entity.channel.ServerTextChannel;
 import org.javacord.api.entity.channel.ServerVoiceChannel;
 import org.javacord.api.entity.emoji.KnownCustomEmoji;
 import org.javacord.api.entity.permission.Role;
+import org.javacord.api.entity.permission.RoleBuilder;
 import org.javacord.api.entity.server.Ban;
 import org.javacord.api.entity.server.DefaultMessageNotificationLevel;
 import org.javacord.api.entity.server.ExplicitContentFilterLevel;
@@ -234,6 +235,10 @@ public class API_Server implements API_DiscordEntity {
 	
 	public boolean isMember(User user) {
 		return server.isMember(user);
+	}
+	
+	public API_RoleBuilder createRoleBuilder() {
+		return new API_RoleBuilder(server);
 	}
 
 	
