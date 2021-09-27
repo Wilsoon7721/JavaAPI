@@ -1,3 +1,4 @@
+
 package com.gmail.calorious.api.javacord;
 
 import java.security.InvalidAlgorithmParameterException;
@@ -14,6 +15,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.gmail.calorious.security.SafeHouse;
 import com.gmail.calorious.security.SafeKey;
+import com.gmail.calorious.util.Printer;
 
 public class JavacordRegistration {
 	private static HashMap<String, SafeKey> logins = new HashMap<>();
@@ -40,7 +42,13 @@ public class JavacordRegistration {
 		SafeKey key = null;
 		try {
 			key = SafeHouse.createSafeKey(token).encrypt();
-		} catch (InvalidKeyException | NoSuchPaddingException | NoSuchAlgorithmException | InvalidAlgorithmParameterException | BadPaddingException | IllegalBlockSizeException e) {}
+		} catch (InvalidKeyException | NoSuchPaddingException | NoSuchAlgorithmException | InvalidAlgorithmParameterException | BadPaddingException | IllegalBlockSizeException e) {
+			Printer.print("Error encrypting key.");
+			Printer.print("Caused by: " + e.getCause());
+			Printer.print("Message: " + e.getLocalizedMessage());
+			Printer.separator();
+			return null;
+		}
 		logins.put(StringUtils.capitalize(applicationName.toLowerCase()), key);
 		return new Javacord_JavaAPI(key);
 	}
