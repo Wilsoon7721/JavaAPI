@@ -1,4 +1,4 @@
-package com.gmail.calorious.api.javacord.objects;
+package com.gmail.calorious.api.javacord;
 
 import java.time.format.DateTimeFormatter;
 import java.util.Collection;
@@ -19,7 +19,6 @@ import org.javacord.api.entity.channel.ServerTextChannel;
 import org.javacord.api.entity.channel.ServerVoiceChannel;
 import org.javacord.api.entity.emoji.KnownCustomEmoji;
 import org.javacord.api.entity.permission.Role;
-import org.javacord.api.entity.permission.RoleBuilder;
 import org.javacord.api.entity.server.Ban;
 import org.javacord.api.entity.server.DefaultMessageNotificationLevel;
 import org.javacord.api.entity.server.ExplicitContentFilterLevel;

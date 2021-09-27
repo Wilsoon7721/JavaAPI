@@ -14,9 +14,9 @@ import org.javacord.api.AccountType;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
 import org.javacord.api.entity.intent.Intent;
+import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 
-import com.gmail.calorious.api.javacord.objects.API_User;
 import com.gmail.calorious.security.SafeKey;
 import com.gmail.calorious.util.Defaults;
 import com.gmail.calorious.util.ExceptionLogger;
@@ -51,6 +51,15 @@ public class Javacord_JavaAPI {
 			} catch(InterruptedException e) {}
 		}
 		return api.getYourself();
+	}
+	
+	public synchronized API_RoleBuilder createRoleBuilder(Server server) {
+		while(api == null)	{
+			try {
+				this.wait();
+			} catch(InterruptedException e) {}	
+		}
+		return new API_RoleBuilder(server);
 	}
 	
 	public synchronized void startBot() {

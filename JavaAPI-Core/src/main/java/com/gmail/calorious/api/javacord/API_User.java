@@ -1,4 +1,4 @@
-package com.gmail.calorious.api.javacord.objects;
+package com.gmail.calorious.api.javacord;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;

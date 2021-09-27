@@ -1,4 +1,4 @@
-package com.gmail.calorious.api.javacord.objects;
+package com.gmail.calorious.api.javacord;
 
 public interface API_DiscordEntity {
 	

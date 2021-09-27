@@ -1,4 +1,4 @@
-package com.gmail.calorious.api.javacord.objects;
+package com.gmail.calorious.api.javacord;
 
 import java.awt.Color;
 
@@ -46,8 +46,8 @@ public class API_RoleBuilder {
 		return this;
 	}
 	
-	public Role createRole() {
-		return FutureCompleter.handle(updater.create());
+	public API_Role createRole() {
+		return new API_Role(FutureCompleter.handle(updater.create()));
 	}
 
 }
