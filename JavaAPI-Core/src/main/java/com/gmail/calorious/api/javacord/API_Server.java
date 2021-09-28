@@ -44,11 +44,20 @@ public class API_Server implements API_DiscordEntity {
 		this.server = server;
 	}
 	
+	public API_ChannelCategoryBuilder createChannelCategoryBuilder() {
+		return new API_ChannelCategoryBuilder(server);
+	}
+	
+	public API_PermissionsBuilder createPermissionsBuilder() {
+		return new API_PermissionsBuilder();
+	}
+	
+	@Override
 	public long getId() {
 		return server.getId();
 	}
 
-	
+	@Override
 	public String getName() {
 		return server.getName();
 	}
