@@ -1,4 +1,4 @@
-package com.gmail.calorious;
+package com.gmail.calorious.api.spigot;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
