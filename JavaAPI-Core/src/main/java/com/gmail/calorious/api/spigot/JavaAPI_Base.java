@@ -26,14 +26,14 @@ public class JavaAPI_Base extends JavaPlugin {
     
     
     private void printIcon(String message) {
-    	MsgUtils.sendConsoleMessage("&b&l    ___________     _________        _________     ");
-    	MsgUtils.sendConsoleMessage("&b&l   |  _______  |   |   ____  |      |___   ___|    ");
-    	MsgUtils.sendConsoleMessage("&b&l   | |	      | |   |  |____| |          | |        ");
-    	MsgUtils.sendConsoleMessage("&b&l   | |_______| |   |  _______|          | |        		JavaAPI v" + getDescription().getVersion());
-    	MsgUtils.sendConsoleMessage("&b&l   |  _______  |   | |		             | |        		  " + message);
-    	MsgUtils.sendConsoleMessage("&b&l   | |       | |   | |                  | |        ");
-    	MsgUtils.sendConsoleMessage("&b&l   | |	      | |   | |             _____| |_____   ");
-    	MsgUtils.sendConsoleMessage("&b&l   | |		  |	|   |_|       	   |_____________|  ");
+    	MsgUtils.sendConsoleMessage("&b&l    ___________     _________        _________        						 						      ");
+    	MsgUtils.sendConsoleMessage("&b&l   |  _______  |   |   ____  |      |___   ___|       						 						      ");
+    	MsgUtils.sendConsoleMessage("&b&l   | |	      | |   |  |____| |          | |       						 								  ");
+    	MsgUtils.sendConsoleMessage("&b&l   | |_______| |   |  _______|          | |        		JavaAPI v" + getDescription().getVersion() + "");
+    	MsgUtils.sendConsoleMessage("&b&l   |  _______  |   | |		             | |        		  " + message + "   						  ");
+    	MsgUtils.sendConsoleMessage("&b&l   | |       | |   | |                  | |           						 						      ");
+    	MsgUtils.sendConsoleMessage("&b&l   | |	      | |   | |             _____| |_____      						 						      ");
+    	MsgUtils.sendConsoleMessage("&b&l   | |		  |	|   |_|       	   |_____________|     						 						      ");
     }
 
     public static JavaAPI_Base getInstance() {
