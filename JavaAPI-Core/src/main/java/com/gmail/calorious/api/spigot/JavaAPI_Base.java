@@ -26,14 +26,14 @@ public class JavaAPI_Base extends JavaPlugin {
     
     
     private void printIcon(String message) {
-    	MsgUtils.sendConsoleMessage("&b   ___________     _________        _________ ");
-    	MsgUtils.sendConsoleMessage("&b  |  _______  |   |   ____  |      |___   ___|");
-    	MsgUtils.sendConsoleMessage("&b  | |	   | |   |  |____| |          | |");
-    	MsgUtils.sendConsoleMessage("&b  | |_______| |   |  _______|          | |               &2JavaAPI v" + getDescription().getVersion());
-    	MsgUtils.sendConsoleMessage("&b  |  _______  |   | |                  | |                 &3" + message);
-    	MsgUtils.sendConsoleMessage("&b  | |       | |   | |                  | |");
-    	MsgUtils.sendConsoleMessage("&b  | |	   | |   | |             _____| |_____");
-    	MsgUtils.sendConsoleMessage("&b  | |	   | |   |_|       	    |_____________|");
+    	MsgUtils.sendConsoleMessage("&b   ___________    _________     _________ ");
+    	MsgUtils.sendConsoleMessage("&b  |  _______  |  |   ____  |   |___   ___|");
+    	MsgUtils.sendConsoleMessage("&b  | |	   | |  |  |____| |       | |");
+    	MsgUtils.sendConsoleMessage("&b  | |_______| |  |  _______|       | |         &2JavaAPI v" + getDescription().getVersion());
+    	MsgUtils.sendConsoleMessage("&b  |  _______  |  | |               | |           &3" + message);
+    	MsgUtils.sendConsoleMessage("&b  | |       | |  | |               | |");
+    	MsgUtils.sendConsoleMessage("&b  | |	   | |  | |           ____| |_____");
+    	MsgUtils.sendConsoleMessage("&b  | |	   | |  |_|       	 |____________|");
     }
 
     public static JavaAPI_Base getInstance() {
