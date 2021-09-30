@@ -3,6 +3,7 @@ package com.gmail.calorious.api.javacord;
 import java.awt.Color;
 
 import org.javacord.api.entity.permission.Permissions;
+import org.javacord.api.entity.permission.Role;
 import org.javacord.api.entity.permission.internal.RoleBuilderDelegate;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.util.internal.DelegateFactory;
