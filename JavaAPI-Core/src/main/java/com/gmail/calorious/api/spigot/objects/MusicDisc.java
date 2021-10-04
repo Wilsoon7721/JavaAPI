@@ -12,4 +12,32 @@ public enum MusicDisc {
 		this.itemId = itemId;
 		this.bukkitMaterial = bukkitMaterial;
 	}
+	
+	public Material getMaterial() {
+		return bukkitMaterial;
+	}
+	
+	public int getItemId() {
+		return itemId;
+	}
+	
+	public MusicDisc fromMaterial(Material material) {
+		for(MusicDisc disc : MusicDisc.values()) {
+			if(disc.getMaterial() == material) {
+				return disc;
+			}
+			continue;
+		}
+		throw new IllegalArgumentException("Corrupt material inserted.");
+	}
+	
+	public MusicDisc fromItemId(int itemId) {
+		for(MusicDisc disc : MusicDisc.values()) {
+			if(disc.getItemId() == itemId) {
+				return disc;
+			}
+			continue;
+		}
+		throw new IllegalArgumentException("Corrupt material inserted.");
+	}
 }
