@@ -1,6 +1,5 @@
 package com.gmail.calorious.api.spigot.builder;
 
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,9 +16,9 @@ public class MetaBuilder {
     private ItemBuilder builder;
 
     public MetaBuilder(ItemStack item, ItemBuilder builder) {
-	this.meta = item.getItemMeta();
-	this.item = item;
-	this.builder = builder;
+    	this.meta = item.getItemMeta();
+    	this.item = item;
+    	this.builder = builder;
     }
 
     public MetaBuilder withName(String name) {

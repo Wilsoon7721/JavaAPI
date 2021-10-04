@@ -21,7 +21,7 @@ public enum MusicDisc {
 		return itemId;
 	}
 	
-	public MusicDisc fromMaterial(Material material) {
+	public static MusicDisc fromMaterial(Material material) {
 		for(MusicDisc disc : MusicDisc.values()) {
 			if(disc.getMaterial() == material) {
 				return disc;
@@ -31,7 +31,7 @@ public enum MusicDisc {
 		throw new IllegalArgumentException("Corrupt material inserted.");
 	}
 	
-	public MusicDisc fromItemId(int itemId) {
+	public static MusicDisc fromItemId(int itemId) {
 		for(MusicDisc disc : MusicDisc.values()) {
 			if(disc.getItemId() == itemId) {
 				return disc;
