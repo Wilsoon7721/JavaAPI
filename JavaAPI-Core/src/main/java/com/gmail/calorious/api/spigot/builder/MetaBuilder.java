@@ -1,8 +1,5 @@
 package com.gmail.calorious.api.spigot.builder;
 
-import java.util.LinkedList;
-import java.util.List;
-
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -10,15 +7,17 @@ import org.bukkit.inventory.meta.ItemMeta;
 import com.gmail.calorious.api.spigot.util.EnchantmentWrapper;
 import com.gmail.calorious.api.spigot.util.MsgUtils;
 
+import java.util.List;
+
 public class MetaBuilder {
     private ItemMeta meta;
     private ItemStack item;
     private ItemBuilder builder;
 
     public MetaBuilder(ItemStack item, ItemBuilder builder) {
-    	this.meta = item.getItemMeta();
-    	this.item = item;
-    	this.builder = builder;
+	this.meta = item.getItemMeta();
+	this.item = item;
+	this.builder = builder;
     }
 
     public MetaBuilder withName(String name) {
@@ -27,12 +26,8 @@ public class MetaBuilder {
     }
 
     public MetaBuilder withLore(List<String> lore) {
-    	LinkedList<String> list = new LinkedList<String>();
-    	for(String string : lore) {
-    		list.add(MsgUtils.color(string));
-    	}
-    	meta.setLore(list);
-    	return this;
+	meta.setLore(lore);
+	return this;
     }
 
     public MetaBuilder withEnchant(EnchantmentWrapper enchWrapper) {
