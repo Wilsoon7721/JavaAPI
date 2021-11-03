@@ -41,6 +41,9 @@ public class Javacord_JavaAPI {
 	}
 	
 	protected Javacord_JavaAPI(SafeKey tokenKey) {
+		/*
+		 * SafeKey must be established properly as it involves a private key that could cause credential leak
+		 */
 		this.tokenKey = tokenKey;
 	}
 	
@@ -106,12 +109,12 @@ public class Javacord_JavaAPI {
 		thread.start();
 	}
 	
-	public API_User getUserById(long id) {
+	public synchronized API_User getUserById(long id) {
 		User user = api.getUserById(id).exceptionally(new ExceptionLogger<User>()).join();
 		return new API_User(user);
 	}
 	
-	public API_User getUserById(String id) {
+	public synchronized API_User getUserById(String id) {
 		User user = api.getUserById(id).exceptionally(new ExceptionLogger<User>()).join();
 		return new API_User(user);
 	}
@@ -141,6 +144,10 @@ public class Javacord_JavaAPI {
 	
 	public boolean isBotRunning() {
 		return running;
+	}
+	
+	public Thread getBotThread() {
+		return thread;
 	}
 	
 }
