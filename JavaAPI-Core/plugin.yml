@@ -1,6 +1,6 @@
 main: com.gmail.calorious.api.spigot.JavaAPI_Base
 name: JavaAPI
-version: 2.8
+version: 3.2
 commands:
      javaapi:
          description: lol
